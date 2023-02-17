@@ -1,0 +1,9 @@
+﻿@model Kirjasto.Models.Kirja
+
+@{
+    ViewData["Title"] = "Varaus";
+}
+
+<h2>Nimekkeen varaaminen</h2>
+<p>@ViewBag.Teksti</p>
+<p>Siirry <a asp-action="Details" asp-controller="Käyttäjä" asp-route-id="@ViewBag.Id">omille sivuille.</a></p>

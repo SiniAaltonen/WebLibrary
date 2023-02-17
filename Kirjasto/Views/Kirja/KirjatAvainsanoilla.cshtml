@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Kirjasto.Models.Kirja>
+
+<h5>Selaa kirjoja avainsanoilla</h5>
+
+@foreach (var item in ViewBag.avainsanat)
+{
+    <a asp-controller="Kirja" asp-action="KirjatAvainsanoilla" asp-route-avainsana="@item">@item</a> <text>&ensp;</text>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kirjailija)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kirjailija.Etunimi)
+                @Html.DisplayFor(modelItem => item.Kirjailija.Sukunimi)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.KirjaId">Lue lisää</a> |
+                <a asp-action="Lainaa" asp-route-id="@item.KirjaId">Lainaa kirja</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

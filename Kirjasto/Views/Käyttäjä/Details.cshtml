@@ -1,0 +1,124 @@
+﻿@model Kirjasto.Models.Käyttäjä
+
+@{
+    ViewData["Title"] = "Omat tiedot";
+}
+@*<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MeFamily Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://miniprojekti.blob.core.windows.net/kirjat/christin-hume-k2Kcwkandwg-unsplash.jpg" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MeFamily - v4.8.0
+  * Template URL: https://bootstrapmade.com/family-multipurpose-html-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+      <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Kirjasto</a></h1>
+        @{
+                            if (String.IsNullOrWhiteSpace(User?.Identity?.Name))
+                            {
+                            <p class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Index">Kirjaudu sisään</a>
+                                </p>
+                            }
+                            else
+                            {
+                                <p> Olet kirjautunut sisään @User.Identity.Name</p>
+                            }
+                        }
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li class="nav-item">
+              <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Etusivu</a>
+          </li>
+           <li class="dropdown"><a href="#"><span>Kirjat</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Kirja" asp-action="Index">Kaikki kirjat</a>
+                        </li>
+              <li><a href="Kirja/Lainaa">Lainaa</a></li>
+            </ul>
+          <li class="dropdown"><a href="#"><span>Kirjaudu</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                 <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Create">Luo uusi käyttäjätunnus</a>
+                 </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Index">Kirjaudu asiakkaana</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Admin">Kirjaudu kirjastonhoitajana</a>
+              </li>
+              <li><a href="/Kirjaudu ulos">Kirjaudu ulos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="KirjauduUlos">Kirjaudu ulos</a>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header><!-- Header loppuu -->*@
+<div>
+    <h4>Omat tiedot</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Käyttäjänimi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Käyttäjänimi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Salasana)
+        </dt>
+        <dt class = "col-sm-2">
+            ***********
+        </dt>
+    </dl>
+</div>
+<div>
+    <h3>@ViewBag.Viesti</h3>
+    <h3>@ViewBag.Teksti</h3>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.KäyttäjäId">Muokkaa tietoja</a> |
+    <a asp-action="ListaLainauksista" asp-route-id="@Model?.KäyttäjäId">Omat lainaukset</a> |
+    <a asp-action="ListaVarauksista" asp-route-id="@Model?.KäyttäjäId">Omat varaukset</a> |
+    <a asp-action="Index" asp-controller="Kirja">Kirjalistaan</a>
+
+</div>
+@*</body>
+</html>*@

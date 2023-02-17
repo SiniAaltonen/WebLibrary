@@ -1,0 +1,192 @@
+﻿@model Kirjasto.Models.Käyttäjä
+
+@{
+    ViewData["Title"] = "Sisäänkirjautuminen";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MeFamily Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://miniprojekti.blob.core.windows.net/kirjat/christin-hume-k2Kcwkandwg-unsplash.jpg" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MeFamily - v4.8.0
+  * Template URL: https://bootstrapmade.com/family-multipurpose-html-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+      <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Kirjasto</a></h1>
+        @{
+                            if (String.IsNullOrWhiteSpace(User?.Identity?.Name))
+                            {
+                            <p class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Index">Kirjaudu sisään</a>
+                    </p>
+                }
+                else
+                {
+                     <li>Kirjautunut käyttäjä @User.Identity.Name</li>
+                                <lu>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Details" asp-route-käyttäjänimi="@User.Identity.Name">Omat sivut</a>
+                                </lu>
+                }
+            }
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li class="nav-item">
+              <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Etusivu</a>
+          </li>
+           <li class="dropdown"><a href="#"><span>Kirjat</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Kirja" asp-action="Index">Kaikki kirjat</a>
+                        </li>
+              @*<li><a href="Kirja/Lainaa">Lainaa</a></li>*@
+            </ul>
+          <li class="dropdown"><a href="#"><span>Kirjaudu</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                 <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Create">Luo uusi käyttäjätunnus</a>
+                 </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Index">Kirjaudu asiakkaana</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Admin">Kirjaudu kirjastonhoitajana</a>
+              </li>
+              <li><a href="/Kirjaudu ulos">Kirjaudu ulos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="KirjauduUlos">Kirjaudu ulos</a>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header><!-- Header loppuu -->
+<!-- ======= KIRJAT Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Kirjastonhoitaja </h2>
+          <p></p>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <img src="https://miniprojekti.blob.core.windows.net/kirjat/jessica-ruscello-OQSCtabGkSY-unsplash.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              Tämä sivu on tarkoitettu vain kirjastomme hallintaa varten. Tarvitset Admin-tunnukset kirjautuaksesi sisälle.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> </li>
+              <li><i class="ri-check-double-line"></i> </li>
+              <li><i class="ri-check-double-line"></i> </li>
+            </ul>
+            <p>
+             Voitte halutessanne rekisteröityä asiakkaaksi tai kirjautua sisään jo olemassa olevilla tunnuksilla.
+            </p>
+            <a href="Index" class="btn-learn-more">Kirjaudu asiakkaana</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- Loppuu Kirjat-osio -->
+
+<h1>Kirjaudu sisään</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="KirjauduAdmin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Käyttäjänimi" class="control-label"></label>
+                <input asp-for="Käyttäjänimi" class="form-control" />
+                <span asp-validation-for="Käyttäjänimi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salasana" class="control-label"></label>
+                <input asp-for="Salasana" class="form-control" type="password"/>
+                <span asp-validation-for="Salasana" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kirjaudu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<p>
+    <a asp-action="CreateAdmin">Uusi käyttäjä? Luo tunnus</a>
+</p>
+</body>
+</html>
+@*@model Kirjasto.Models.Käyttäjä
+
+@{
+    ViewData["Title"] = "Sisäänkirjautuminen";
+}
+
+<h1>Kirjaudu sisään</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="KirjauduAdmin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Käyttäjänimi" class="control-label"></label>
+                <input asp-for="Käyttäjänimi" class="form-control" />
+                <span asp-validation-for="Käyttäjänimi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salasana" class="control-label"></label>
+                <input asp-for="Salasana" class="form-control" />
+                <span asp-validation-for="Salasana" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kirjaudu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<p>
+    <a asp-action="CreateAdmin">Uusi käyttäjä? Luo tunnus</a>
+</p>
+*@

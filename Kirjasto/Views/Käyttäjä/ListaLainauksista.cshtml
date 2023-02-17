@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Kirjasto.Models.Lainau>
+
+@if (Model == null)
+{
+    <h3>Sinulla ei ole voimassaolevia lainauksia.</h3>
+}
+
+<h3>Omat lainaukset</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LainausPvm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EräPvm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kirja)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LainausPvm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EräPvm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kirja.Nimi)
+            </td>
+            <td>
+                <a asp-action="Palauta" asp-controller="Kirja" asp-route-id="@item.LainausId">Palauta kirja</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a asp-action="Details" asp-route-id="@ViewBag.id">Palaa omille sivuille</a>

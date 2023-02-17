@@ -1,0 +1,182 @@
+﻿@model Kirjasto.Models.Käyttäjä
+@{
+    ViewData["Title"] = "Luo tili";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MeFamily Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://miniprojekti.blob.core.windows.net/kirjat/christin-hume-k2Kcwkandwg-unsplash.jpg" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MeFamily - v4.8.0
+  * Template URL: https://bootstrapmade.com/family-multipurpose-html-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+      <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Kirjasto</a></h1>
+        @{
+                            if (String.IsNullOrWhiteSpace(User?.Identity?.Name))
+                            {
+                            <p class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Index">Kirjaudu sisään</a>
+                                </p>
+                            }
+                            else
+                            {
+                                <li>Kirjautunut käyttäjä @User.Identity.Name</li>
+                                <lu>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Details" asp-route-käyttäjänimi="@User.Identity.Name">Omat sivut</a>
+                                </lu>
+                            }
+                        }
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li class="nav-item">
+              <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Etusivu</a>
+          </li>
+           <li class="dropdown"><a href="#"><span>Kirjat</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Kirja" asp-action="Index">Kaikki kirjat</a>
+                        </li>
+              @*<li><a href="Kirja/Lainaa">Lainaa</a></li>*@
+            </ul>
+          <li class="dropdown"><a href="#"><span>Kirjaudu</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                 <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Create">Luo uusi käyttäjätunnus</a>
+                 </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Index">Kirjaudu asiakkaana</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Admin">Kirjaudu kirjastonhoitajana</a>
+              </li>
+              <li><a href="/Kirjaudu ulos">Kirjaudu ulos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="KirjauduUlos">Kirjaudu ulos</a>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header><!-- Header loppuu -->
+   <!-- ======= Event List Section ======= -->
+    <section id="event-list" class="event-list">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-img">
+                <img src="https://miniprojekti.blob.core.windows.net/kirjat/xavi-cabrera-kn-UmDZQDjM-unsplash.jpg" alt="...">
+              </div>
+              @*<lu></lu>
+              <lu></lu>*@
+               <h1>Luo uusi käyttäjätili</h1>
+              <div class="row">
+                 <div class="col-md-4">
+                 <form asp-action="Create">
+                  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <div class="form-group">
+                <label asp-for="Käyttäjänimi" class="control-label"></label>
+                <input asp-for="Käyttäjänimi" class="form-control" />
+                <span asp-validation-for="Käyttäjänimi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salasana" class="control-label"></label>
+                <input asp-for="Salasana" class="form-control" />
+                <span asp-validation-for="Salasana" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Luo tili" class="btn btn-primary" />
+            </div>
+               </form>
+              </div>
+               </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-img">
+                <img src="https://miniprojekti.blob.core.windows.net/kirjat/sofya-NomETWcv2Fo-unsplash%20(1).jpg" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Ohjeet kirjojen käyttöön</h5>
+                <p class="fst-italic text-center">Rekisteröityessäsi käyttäjäksi sitoudut sääntöihin.</p>
+                <p class="card-text">Kirjat ovat henkilökohtaisesti vain sinulla lainassa. Niiden kunto tulee olla erinomainen ja tekijänoikeuslakeja on noudatettava. </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Event List Section -->
+
+@*<h1>Luo uusi käyttäjätili</h1>
+<hr />
+<h2>@ViewBag.Virhe</h2>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Käyttäjänimi" class="control-label"></label>
+                <input asp-for="Käyttäjänimi" class="form-control" />
+                <span asp-validation-for="Käyttäjänimi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salasana" class="control-label"></label>
+                <input asp-for="Salasana" class="form-control" />
+                <span asp-validation-for="Salasana" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Luo tili" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit">Täydennä omia tietoja</a>
+</div>
+*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+</body>
+</html>

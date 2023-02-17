@@ -1,0 +1,52 @@
+﻿@model Kirjasto.Models.Kirja
+
+@{
+    ViewData["Title"] = "Luo";
+}
+
+<h1>Create</h1>
+
+<h4>Kirja</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nimi" class="control-label"></label>
+                <input asp-for="Nimi" class="form-control" />
+                <span asp-validation-for="Nimi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kuvaus" class="control-label"></label>
+                <input asp-for="Kuvaus" class="form-control" />
+                <span asp-validation-for="Kuvaus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tyyppi" class="control-label"></label>
+                <input asp-for="Tyyppi" class="form-control" />
+                <span asp-validation-for="Tyyppi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Avainsanat" class="control-label"></label>
+                <input asp-for="Avainsanat" class="form-control" />
+                <span asp-validation-for="Avainsanat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KirjailijaId" class="control-label"></label>
+                <select asp-for="KirjailijaId" class ="form-control" asp-items="ViewBag.KirjailijaId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

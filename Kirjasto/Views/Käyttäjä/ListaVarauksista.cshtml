@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Kirjasto.Models.Varau>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Kirjan nimi
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kirja.Nimi)
+            </td>
+            <td>
+                <a asp-action="PoistaVaraus" asp-controller="Kirja" asp-route-id="@item.VarausId">Poista varaus</a>
+            </td>
+            @if (@item.Kirja.Lainassa == false)
+                {
+                 <td>
+                <a asp-action="Lainaa" asp-controller="Kirja" asp-route-id="@item.Kirja.KirjaId">Lainaa kirja</a>
+                </td>
+                }
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-action="Details" asp-controller="Käyttäjä" asp-route-id="@ViewBag.käyttäjäid">Takaisin omiin tietoihin</a>

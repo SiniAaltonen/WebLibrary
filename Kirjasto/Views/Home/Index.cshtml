@@ -1,0 +1,319 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>MeFamily Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://miniprojekti.blob.core.windows.net/kirjat/christin-hume-k2Kcwkandwg-unsplash.jpg" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: MeFamily - v4.8.0
+  * Template URL: https://bootstrapmade.com/family-multipurpose-html-bootstrap-template-free/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Kirjasto</a></h1>
+        @{
+                            if (String.IsNullOrWhiteSpace(User?.Identity?.Name))
+                            {
+                            <p class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Index">Kirjaudu sisään</a>
+                    </p>
+                }
+                else
+                {
+                     <li>Kirjautunut käyttäjä @User.Identity.Name</li>
+                                <lu>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Details" asp-route-käyttäjänimi="@User.Identity.Name">Omat sivut</a>
+                                </lu>
+                }
+            }
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li class="nav-item">
+              <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index"> Etusivu</a>
+          </li>
+           <li class="dropdown"><a href="#"><span>Kirjat</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Kirja" asp-action="Index">Kaikki kirjat</a>
+                        </li>
+            @*  <li><a href="Kirja/Lainaa">Lainaa</a></li>*@
+            </ul>
+          <li class="dropdown"><a href="#"><span>Kirjaudu</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                 <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Create">Luo uusi käyttäjätunnus</a>
+                 </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Index">Kirjaudu asiakkaana</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="Admin">Kirjaudu kirjastonhoitajana</a>
+              </li>
+              <li><a href="/Kirjaudu ulos">Kirjaudu ulos</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Käyttäjä" asp-action="KirjauduUlos">Kirjaudu ulos</a>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header><!-- Header loppuu -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url(https://miniprojekti.blob.core.windows.net/kirjat/alfons-morales-YLSwjSy7stw-unsplash.jpg)">
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url(https://miniprojekti.blob.core.windows.net/kirjat/daria-nepriakhina-xY55bL5mZAM-unsplash.jpg)">
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url(https://miniprojekti.blob.core.windows.net/kirjat/elisa-calvet-b-S3nUOqDmUvc-unsplash.jpg)">
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= KIRJAT Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Kirjat</h2>
+          <p>Kirjastostamme löydät parhaat koodauskirjavinkit! Joka viikko nostamme eri aihealueita ja uusimpia teoksia etusivullemme. Tutustuthan varausjärjestelmäämme lainataksesi omat suosikkisi.</p>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <img src="https://miniprojekti.blob.core.windows.net/kirjat/sincerely-media-nGrfKmtwv24-unsplash.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              Kirjastomme tekee yhteistyötä alan suurimpien vaikuttajien kanssa. Yksi pilottihankeemme on kirjojen ennakkopainosten myynti ennen virallisen myynnin aloittamista. Tässä esimerkki tulevista teoksista:
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> - Back End -ohjelmointi, Tuskaa ja Tunnettavuutta, Alisa Svensson</li>
+              <li><i class="ri-check-double-line"></i> - SQL-opas, Miten minusta tuli SQL-kielen historiallisin tuntija, Niko Nilimaa</li>
+              <li><i class="ri-check-double-line"></i> - Front End -ohjemoinnin niksit, Sini Aaltonen </li>
+            </ul>
+            <p>
+              Uusien kirjojen tullessa kirjatoomme, pääsette varamaan niitä varausjärjestelmämme kautta. Uutuuskirjojen ennakkopainokset ovat äärettömän suosittuja ja ymmärrämme kasvavan kysynnän aina julkaisupäivien lähellä. Toivommekin, että seuraatte varausjärjestelmäämme aktiivisesti. Uutuuksia odotellessa voitte tustustua tämänhetkiseen kirjatarjontaamme.
+            </p>
+            <a href="kirja" class="btn-learn-more">Näytä kirjat</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- Loppuu Kirjat-osio -->
+
+    <!-- ======= Kirjallisuudeet -osio ======= -->
+    <section id="features" class="features">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="bi bi-laptop"></i> <img src="https://miniprojekti.blob.core.windows.net/kirjat/justus-menke-hmquzx6dOSQ-unsplash.jpg" class="img-fluid" alt=""></div>
+            <h4 class="title"><a href="">Back End</a></h4>
+            <p class=""description">Back end -ohjelmoinnissa käsitellään koodia, joka ajetaan sivuston palvelimella.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="bi bi-bar-chart"></i><img src="https://miniprojekti.blob.core.windows.net/kirjat/girl-with-red-hat-Z6SXt1v5tP8-unsplash.jpg" class="img-fluid" alt=""></div>
+            <h4 class="title"><a href="">Front End</a></h4>
+            <p class="description">Front End -ohjelmoinnistta kertovassa kirjallisuudessa käsitellään koodia, joka ajetaan verkkoselaimessa, kun käytät sivua.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="bi bi-bounding-box"></i> <img src="https://miniprojekti.blob.core.windows.net/kirjat/lappari.jpg" class="img-fluid" alt=""></div>
+            <h4 class="title"><a href="">Full Stack</a></h4>
+            <p class="description"> Kirjastomme tarjoaa useita kirjallisuuden lähteitä Full Stack - ohjelmoijan tueksi.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="bi bi-broadcast"></i> <img src="https://miniprojekti.blob.core.windows.net/kirjat/koodia - Copy.jpg" class="img-fluid" alt=""></div>
+            <h4 class="title"><a href="">C#</a></h4>
+            <p class="description">C# -kielen saloista useita kansainvälisiä teoksia.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="bi bi-camera"></i> <img src="https://miniprojekti.blob.core.windows.net/kirjat/SQL.jpg" class="img-fluid" alt=""></div>
+            <h4 class="title"><a href="">SQL</a></h4>
+            <p class="description">SQL-kielen hallintaa tukevat ja opastavat teokset.</p>
+          </div>
+          <div class="col-lg-4 col-md-6 icon-box">
+            <div class="icon"><i class="bi bi-diagram-3"></i> <img src="https://miniprojekti.blob.core.windows.net/kirjat/lapparisormella.jpg" class="img-fluid" alt=""></div>
+            <h4 class="title"><a href="">Python</a></h4>
+            <p class="description">Käärmeellisen loistavan kielen avuksi kirjastossamm on useita teoksia.</p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- Kirjallisuudet -osio loppuu tähän -->
+
+    <!-- ======= Tiedotteet ======= -->
+    <section id="recent-photos" class="recent-photos">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Tiedotteet</h2>
+          <p>Kirjastomme on saanut huolestunutta palautetta digitalisaation tuomasta epävarmuudesta. Tahdomme korostaa, että kirjastomme arvot takaavat sen, että tietokirjat ovat kaikkien asiakkaidemme saatavilla nyt ja aina.</p>
+        </div>
+
+     @*   <div class="recent-photos-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><a href=https://miniprojekti.blob.core.windows.net/kirjat/christin-hume-k2Kcwkandwg-unsplash.jpg"" class="glightbox"><img src="https://miniprojekti.blob.core.windows.net/kirjat/christin-hume-k2Kcwkandwg-unsplash.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="assets/img/recent-photos/recent-photos-2.jpg" class="glightbox"><img src="assets/img/recent-photos/recent-photos-2.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="assets/img/recent-photos/recent-photos-3.jpg" class="glightbox"><img src="assets/img/recent-photos/recent-photos-3.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="assets/img/recent-photos/recent-photos-4.jpg" class="glightbox"><img src="assets/img/recent-photos/recent-photos-4.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="assets/img/recent-photos/recent-photos-5.jpg" class="glightbox"><img src="assets/img/recent-photos/recent-photos-5.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="assets/img/recent-photos/recent-photos-6.jpg" class="glightbox"><img src="assets/img/recent-photos/recent-photos-6.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="assets/img/recent-photos/recent-photos-7.jpg" class="glightbox"><img src="assets/img/recent-photos/recent-photos-7.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="assets/img/recent-photos/recent-photos-8.jpg" class="glightbox"><img src="assets/img/recent-photos/recent-photos-8.jpg" class="img-fluid" alt=""></a></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+*@
+      </div>
+    </section><!-- Tiedotteeet -osio loppuu tähän -->
+
+  </main><!-- End #main -->
+
+     <!-- ======= Members Section ======= -->
+    <section id="members" class="members">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="https://miniprojekti.blob.core.windows.net/kirjat/julia-kicova-g827ZOCwt30-unsplash.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Kirjakerho</h4>
+                <span>Toimii kuukausittain</span>
+                <p>Suosiota herättänyt KKK eli koodareiden kirjakerho on täällä taas! Liitythän joukkoon iloiseen mitä pikimmiten! Kirjakerho koostuu 20 koodarista. Olemme jakaneet koodari aina kahteen eri joukkoon - ekstrovertteihin ja introvertteihin. Ekstroverttien ryhmä kokoontuu kuukausittain aina kasvotusten. Introverttien ryhmä tapaa myös kuukausittain, mutta tapaamismuoto on hiukan vapaampi ja ryhmään voi osallistua myös anonyymina. </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="https://miniprojekti.blob.core.windows.net/kirjat/john-mark-smith-F_cHIM0Kcy4-unsplash.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Onko siunlla koodausta käsittelevä kirja kirjoitettuna?</h4>
+                <span>Julkaise se meidän kauttamme</span>
+                <p>Koodarit ympäri Suomen kaipaavat uusia esikuvia. Mikäli sinulla on koneellasi luomus jonka olisit valmis julkaisemaan, jota et ole vielä uskaltanutkaan haaveilla julkaisevasi, otathan yhteyttä. Kirjastollamme on oma kustantamo ja mielellämme katsomme luomuksesi läpi. </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="https://miniprojekti.blob.core.windows.net/kirjat/jaredd-craig-HH4WBGNyltc-unsplash.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Haaveiletko kirjastonhoitajan työstä?</h4>
+                <span>Tule meille töihin</span>
+                <p>Rekrytoimme harvoin ja emme oikeastaan nytkään. Timanttisia ihmisiä kuitenkin kohtaa harvoin ja jos olet sellainen, otamme sinut mielellämme joukkoomme!</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Members Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>Kirjasto koodareille</h3>
+         <p> Tuemme myös retroutta ja sen vuoksi meillä on myös fyysinen kirjasto Espoossa osoitteessa Kirjastokuja 8.</p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/family-multipurpose-html-bootstrap-template-free/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

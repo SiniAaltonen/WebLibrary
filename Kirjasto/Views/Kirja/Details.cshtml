@@ -1,0 +1,53 @@
+﻿@model Kirjasto.Models.Kirja
+
+@{
+    ViewData["Title"] = "Kirjan tiedot";
+}
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Nimi)</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kirjailija)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kirjailija.Etunimi) @Html.DisplayFor(model => model.Kirjailija.Sukunimi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nimi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nimi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kuvaus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kuvaus)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tyyppi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tyyppi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Avainsanat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Avainsanat)
+        </dd>
+        <dt class = "col-sm-2">
+           @Html.DisplayNameFor(model => model.Lainassa)
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.Teksti
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Takaisin selaukseen</a> |
+    <a asp-action="Lainaa" asp-route-id="@Model?.KirjaId">Lainaa kirja</a>
+</div>
